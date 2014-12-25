@@ -1,0 +1,12 @@
+*.py[co]
+*.sw[po]
+*.bak
+*.orig
+*~
+.project
+.pydevproject
+
+datafiles
+.idea/*
+
+

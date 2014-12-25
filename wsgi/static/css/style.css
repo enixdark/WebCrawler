@@ -1,0 +1,50 @@
+.offset7 {
+    margin-right:50%;
+    color: #000000;
+}
+
+body {
+    font-size: 13px;
+}
+
+.my-container [class^="col-"] {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    border: 1px solid HighlightText;
+}
+
+.t1 {
+    color: red;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.t2 {
+    color: indigo;
+    font-weight: bold;
+}
+
+.t3 {
+    background-color: transparent;
+    border: 0px transparent ;
+}
+
+.t4 [class^='col-'] {
+    padding: -10px;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }
+
+div > .lssrchres:hover{
+    background-color: #bbbbbb;
+}

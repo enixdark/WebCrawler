@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+
+
+    <br>
+    <hr>
+    <br>
+    <h2 style="text-align: center">Search Results<br></h2>
+    <br>
+    <h4><strong>About {{ page_obj.paginator.count }} results </strong></h4>
+    <br>
+
+    <hr>
+    {% if page_obj.paginator.count > 0 %}
+    {% for i in page_obj %}
+    <a class="result" href="/results/{{ i }}/">
+        <b> Patent {{ i }} </b></a>
+    <div class="lssrchres">  {{ i.title }} </div>
+    {% endfor %}
+    </div>
+
+
+
+     <div class="pagination">
+
+        <span class="page-links">
+            <span class="page-current">
+                {% load filter %}
+                <ul class="pagination pagination-sm">
+
+                <li><a href="?page={{ 1  }}"> <<< </a></li>
+                {% if page_obj.has_previous %}
+                <li><a href="?page={{ page_obj.previous_page_number  }}">&laquo;</a></li>
+                {% endif %}
+
+                {% for i in page_numbers %}
+                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                {% endfor %}
+
+                {% if page_obj.has_next %}
+                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                {% endif %}
+                <li><a href="?page={{  page_obj.paginator.num_pages  }}"> >>> </a></li>
+
+                </ul>
+            </span>
+        </span>
+    </div>
+    {% else %}
+    <br>
+    <br>
+    <br>
+    <h4><strong>NO DATA</strong></h4>
+    <br>
+    <br>
+    <br>
+    {% endif %}
+</div>
+{% endblock %}

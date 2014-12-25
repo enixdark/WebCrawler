@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% load static %}
+
+    <div id="body-wrapper">
+        <div id="body" class="container relative">
+            <section id="content">
+                <div id="hero">
+                    <div class="row">
+                        <div id="hero1" class="hidden-xs hidden-sm col-md-12 col-lg-12">
+                            <div id="hero2">
+                                <div id="heroimg"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main">
+                    <div class="row new">
+                        {% for key,value in data %}
+                        {% if value.0 %}
+
+                        <div class="col-xs-12 col-sm-2">
+                            <div class="secthd mt1-5"><i class="ss-icon ss-standard"></i>{{ key }}</div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-10">
+                            <div class="view view-home view-id-home view-display-id-page_1 view-dom-id-1">
+                                <div class="view-content">
+                                    {% if value.0 %}
+                                    <div class="views-row views-row-1 views-row-odd views-row-first">
+                                        <div class="screens-thumbs-index thumb-1">
+                                            <div class="thumb">
+                                                <a href="/results/{{ value.0.patent }}/">
+                                                    <img src="http://media.konigi.com/tools/thumbs/balsamiq-uxtemplate.png"/>
+                                                </a><br/><div class="indexlink"><a href="/tools/balsamiq-ux-template" rel="bookmark" title="{{ value.0.title }}">{{ value.0.title }}</a><div class="nodetype"><a href="/tools/overview" class="type">{{ value.0.patent }}</a></div></div> </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if value.1 %}
+                                   <div class="views-row views-row-2 views-row-even">
+                                        <div class="screens-thumbs-index thumb-2">
+                                            <div class="thumb">
+                                                <a href="/results/{{ value.1.patent }}/"><img id='bluga-thumbnail-2881' class='bluga-thumbnail medium2' src='http://konigi.com/files/konigi/bluga/wt53cda276915a2_medium2.jpg'/></a><div class="indexlink"><a href="/notebook/what-if-dj-controllers-had-built-screens" rel="bookmark">{{ value.1.title }}</a><div class="nodetype"><a href="/notebook/latest" class="type">{{ value.1.patent }}</a></div></div> </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+
+                                    {% if value.2 %}
+                                    <div class="views-row views-row-3 views-row-odd">
+                                        <div class="screens-thumbs-index thumb-3">
+                                            <div class="thumb">
+                                                <div class="indexlink-big"><a href="/results/{{ value.2.patent }}/" rel="bookmark">{{ value.2.title }}</a><div class="nodetype"><a href="/notebook/latest" class="type">{{ value.2.patent }}</a></div></div> </div>
+                                        </div>
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+
+                        {% else %}
+                        <div class="row new">
+                            <div class="col-xs-12 col-sm-2">
+                                <div class="secthd mt2-5"><i class="ss-icon ss-standard"></i>{{ key }}</div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-10">
+                                <p class="tagline">No Resutl</p>
+                                <p class="description">Konigi shares news, resources and tools for interface designers.</p>
+                                <hr/>
+                            </div>
+
+                        </div>
+                        {% endif %}
+
+
+
+                        {% endfor %}
+
+
+                    </div>
+                </div>
+
+            </section>
+            <script type="text/javascript">
+                $(document).ready(function() {
+                    var myHero = new Array();
+                    myHero[0] = "map";
+                    myHero[1] = "code";
+                    myHero[2] = "design";
+                    myHero[3] = "screens";
+                    // bk: discovery, code, design
+                    var myRandom = Math.floor(Math.random()*myHero.length);
+                    var myRandomHero = myHero[myRandom];
+                    var myHero = "<img src='http://media.konigi.com/img/hero/"+myRandomHero+".svg' class='img-responsive'>";
+                    $('#heroimg').html(myHero);
+                });
+            </script>
+        </div>
+    </div>
+    <script type="text/javascript" src="{% static 'static/js/konogi.js' %}"></script>
+    <script type="text/javascript">
+        <!--//--><![CDATA[//><!--
+        jQuery.extend(Drupal.settings, { "googleCSE": { "language": "en" } });
+        //--><!]]>
+    </script>
+</div>
+
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container my-container">
+    <hr>
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-12 t1">
+            Total Assignment:{{ data|length }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Patent:
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            {{ patent.patent }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Issue:
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            {{ patent.issue|date:"m/d/Y" }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Application:
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            {{ patent.application }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Filing:
+        </div>
+        <div class="col-sm-2 col-md-2 col-lg-2">
+            {{ patent.filing|date:"m/d/Y" }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Inventor:
+        </div>
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            {{ patent.inventor }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Title:
+        </div>
+        <div class="col-sm-5 col-md-5 col-lg-5">
+            {{ patent.title }}
+        </div>
+    </div>
+    {% if data %}
+    {% for assignment in data %}
+    <div class="row">
+        <div class="col-sm-8 col-md-8 col-lg-12 t1">
+            Assignment:{{ assignment.id }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Reel/Frame:
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            {{ assignment.reel_frame }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Recorded:
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            {{ assignment.recorded }}
+        </div>
+        <div class="col-sm-1 col-md-1 col-lg-1 t2">
+            Pages:
+        </div>
+        <div class="col-sm-3 col-md-3 col-lg-3">
+            {{ assignment.pages }}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-2 col-md-2 col-lg-2 t2">
+            Conveyance:
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+            {{  assignment.conveyance}}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm-2 col-md-2 col-lg-2 t2">
+            <div>Assignors:</div>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+        {% for assignor in assignment.assignors %}
+            <div class="col-sm-7 col-md-7 col-lg-7">
+                  {{ assignor.0 }}
+            </div>
+            <div class="col-sm2 col-md-2 col-lg-2 t2">
+                  ExecTime:
+            </div>
+            <div class="col-sm-3 col-md-3 col-lg-3">
+                  {{ assignor.1|date:"m/d/Y" }}
+            </div>
+        {% endfor %}
+        </div>
+
+    </div>
+    <div class="row">
+
+        <div class="col-sm-2 col-md-2 col-lg-2 t2">
+            <div>Assignees:</div>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+        {% for assignee in assignment.assignees %}
+            <div>
+                  {{ assignee }}
+            </div>
+
+        {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <div class="col-sm-2 col-md-2 col-lg-2 t2">
+            <div>Correspondent:</div>
+        </div>
+        <div class="col-sm-10 col-md-10 col-lg-10">
+        {% for correspondent in assignment.correspondent %}
+            <div>
+                  {{ correspondent }}
+            </div>
+
+        {% endfor %}
+        </div>
+
+    </div>
+    {% endfor %}
+    {% endif %}
+
+
+</div>
+</div>
+{% endblock %}
+
+

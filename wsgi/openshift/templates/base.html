@@ -1,0 +1,150 @@
+
+{% block header %}
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>UC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <link rel="shortcut icon" href="/sites/konigi.com/themes/konigi/favicon.ico" type="image/x-icon"/>
+    <link type="text/css" rel="stylesheet" media="all" href="{% static 'static/css/konigi.css' %}"/>
+    <link href="{% static 'css/bootstrap.min.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/konigi.css' %}" type="text/css" rel="stylesheet" media="all">
+    <link href="{% static 'css/jquery-ui.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/jquery-ui.theme.min.css' %}" type="text/css" rel="stylesheet">
+    <link href="{% static 'css/jquery-ui.structure.min.css' %}" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery-2.1.1.js' %}"></script>
+    <script type="text/javascript">
+        <!--//--><![CDATA[//><!--
+        jQuery.extend(Drupal.settings, { "basePath": "/", "cron": { "basePath": "/poormanscron", "runNext": 1408680302 } });
+        //--><!]]>
+    </script>
+</head>
+<body class="top konigi-5-0 " id="home"><a id="top"></a>
+<div id="wrapper">
+    <div id="header-wrapper">
+        <div id="header-affix">
+            <section id="header" class="container">
+                <nav id="main-menu" class="row">
+                    <div id="logo" class="col-xs-12 col-sm-2 col-md-2">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="/" class="navbar-brand">UC</a>
+                        </div>
+                    </div>
+                    <div id="nav" class="col-xs-12 col-sm-10 col-md-10">
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            <nav id="gnav" class="navbar navbar-default">
+                                <ul class="nav navbar-nav">
+                                    <li id="gnav-home"><a href="/" title="Home">Home</a></li>
+                                    {% if user.is_superuser %}
+                                    <li id="gnav_manager"><a href="/admin/" title="Manager">Manager</a> </li>
+                                    {% endif %}
+                                </ul>
+                                <nav id="tnav">
+                                    {% if user.is_anonymous %}
+                                    <a class="btn-link" data-toggle="modal" data-target="#myModal">
+                                        <i class="glyphicon glyphicon-user"></i>
+                                    </a>
+                                    {% endif %}
+
+                                    {% if not user.is_anonymous %}
+                                    <a href="/search/" id="search"><i class="glyphicon glyphicon-search"></i></a>
+                                    {% endif %}
+
+                                    {% if not user.is_anonymous %}
+                                    <a href="/logout/" id="logout"><i class="glyphicon glyphicon-log-out"></i></a>
+                                    {% endif %}
+                                </nav>
+
+
+
+
+                            </nav>
+
+                        </div>
+                    </div>
+                </nav>
+            </section> </div>
+    </div>
+
+    {% endblock %}
+
+    {% block login %}
+    <div class="modal fade" id="myModal" tabindex="10" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="center-block" style="width:30%;margin-left: 33%;margin-top: 7%">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                </div>
+                <div class="modal-body">
+
+
+                    <form method="post" action="/">
+                        {% csrf_token %}
+                        <h2 class="form-signin-heading">Please sign in</h2>
+                        <input name="username" class="form-control" placeholder="username" required="" autofocus="" type="text">
+                        <input name="password" class="form-control" placeholder="password" required="" type="password">
+                        <div class="checkbox">
+                            <label>
+                                <input value="remember-me" type="checkbox"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" type="submit">   Log in   </button>
+                    </form>
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {% block footer %}
+    <hr>
+
+    <div id="footer-wrapper">
+    <div class="container">
+        <div id="footer" class="row">
+            
+        </div> </div>
+</div>
+{% endblock %}
+{% block loadjs %}
+<script type="text/javascript" src="{% static 'js/bootstrap-datetimepicker.js' %}" charset="UTF-8"></script>
+<script type="text/javascript" src="{% static 'js/jquery-2.1.1.js' %}" charset="UTF-8"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/konogi.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/ajax.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+    _uacct = "UA-308563-3";
+    urchinTracker();
+</script>'
+{% endblock %}
+{% block end %}
+</body>
+</html>
+{% endblock %}
